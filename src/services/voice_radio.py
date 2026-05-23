@@ -17,8 +17,8 @@ class RadioVoice:
         
         self.elevenlabs_key = os.getenv("ELEVENLABS_API_KEY")
         self.use_elevenlabs = os.getenv("ELEVENLABS_ENABLED", "true").lower() == "true"
-        # User's custom selected voice ID
-        self.voice_id = "gWaDC0oXAheKoZfljzuI"
+        # "pNInz6obpgDQGcFmaJgB" (Adam) is a very solid, energetic default available to all accounts on the free tier.
+        self.voice_id = "pNInz6obpgDQGcFmaJgB"
 
     def toggle_elevenlabs(self):
         """Toggles the voice engine and returns the new state."""

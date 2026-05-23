@@ -1,0 +1,11 @@
+fastf1
+pandas
+matplotlib
+numpy
+arcade
+pyglet
+pyside6
+questionary
+rich
+ibm-watsonx-ai
+python-dotenvrequests

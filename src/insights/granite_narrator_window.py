@@ -64,6 +64,7 @@ class GraniteNarratorWindow(PitWallWindow):
         self._signal_bridge.narration_ready.connect(self._on_narration_ready)
         self._pending_count = 0
         self._is_paused = False
+        self._latest_telemetry = None  # Store latest frame for user questions
         super().__init__()
         self.setWindowTitle("AI Race Engineer — Powered by IBM Granite")
         self.setGeometry(100, 100, 480, 700)
@@ -268,6 +269,58 @@ class GraniteNarratorWindow(PitWallWindow):
                 }}
             """)
 
+    def _build_telemetry_context(self) -> str:
+        """Build a text summary of current race state for user question context."""
+        data = self._latest_telemetry
+        if not data:
+            return "No live telemetry data available yet."
+
+        lines = []
+
+        # Session info
+        session_data = data.get("session_data", {})
+        lap = session_data.get("lap", "?")
+        total = session_data.get("total_laps", "?")
+        time_str = session_data.get("time", "")
+        lines.append(f"Current Race State — Lap {lap}/{total} ({time_str})")
+
+        # Tyre compound map
+        _TYRE_NAMES = {1.0: "Soft", 2.0: "Medium", 3.0: "Hard", 4.0: "Intermediate", 5.0: "Wet"}
+
+        # Driver data
+        frame = data.get("frame", {})
+        drivers = frame.get("drivers", {})
+        if drivers:
+            # Sort by track progress (lap * big number + distance)
+            sorted_d = sorted(
+                drivers.items(),
+                key=lambda x: (x[1].get('lap') or 0) * 100000 + (x[1].get('dist') or 0),
+                reverse=True
+            )
+            lines.append("\nDrivers (in approximate race order):")
+            for i, (code, d) in enumerate(sorted_d, 1):
+                speed = d.get('speed', '?')
+                tyre_val = d.get('tyre')
+                tyre = _TYRE_NAMES.get(float(tyre_val), 'Unknown') if tyre_val is not None else '?'
+                tyre_life = d.get('tyre_life', '?')
+                in_pit = d.get('in_pit', False)
+                drv_lap = d.get('lap', '?')
+                pit_str = " [IN PIT]" if in_pit else ""
+                lines.append(
+                    f"  P{i}: {code} | Lap {drv_lap} | {speed} km/h | "
+                    f"Tyre: {tyre} ({tyre_life} laps old){pit_str}"
+                )
+
+        # Weather
+        weather = frame.get("weather", {})
+        if weather:
+            track_temp = weather.get('track_temp', '?')
+            air_temp = weather.get('air_temp', '?')
+            rain = weather.get('rain_state', 'None')
+            lines.append(f"\nWeather: Track {track_temp}°C | Air {air_temp}°C | Rain: {rain}")
+
+        return "\n".join(lines)
+
     def _handle_user_question(self):
         question = self._ask_input.text().strip()
         if not question:
@@ -279,19 +332,25 @@ class GraniteNarratorWindow(PitWallWindow):
         if self._is_paused or self._pending_count >= self.MAX_PENDING:
             return
 
-        # Build prompt
+        # Build prompt with live telemetry context
+        context = self._build_telemetry_context()
         prompt = (
             f"USER QUESTION: {question}\n\n"
-            f"Answer the user's question as the AI Race Engineer using your knowledge of Formula 1. "
-            f"Keep it concise (1-2 sentences) and factual."
+            f"CURRENT TELEMETRY DATA:\n{context}\n\n"
+            f"Answer the user's question as the AI Race Engineer using ONLY the "
+            f"telemetry data above. Keep it concise (1-3 sentences) and factual."
         )
+
+        # Get current lap info for the card
+        session_data = (self._latest_telemetry or {}).get("session_data", {})
+        current_lap = session_data.get("lap", "?")
 
         # Build a synthetic event to render it in the feed
         event = {
             "type": "track_status",
             "prompt": prompt,
             "label": f"Q: {question}",
-            "lap": "?",
+            "lap": current_lap,
             "time_str": "Now"
         }
 
@@ -310,6 +369,9 @@ class GraniteNarratorWindow(PitWallWindow):
     MAX_PENDING = 3
 
     def on_telemetry_data(self, data):
+        # Store latest telemetry for user questions
+        self._latest_telemetry = data
+
         # Update header status
         session_data = data.get("session_data", {})
         if session_data:

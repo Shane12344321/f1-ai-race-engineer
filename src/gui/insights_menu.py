@@ -122,6 +122,7 @@ class InsightsMenu(QMainWindow):
                 ("Telemetry Stream Viewer", "View raw telemetry data", self.launch_telemetry_viewer),
                 ("Live Timing Tower", "Broadcast-style live leaderboard with speeds and tyres", self.launch_timing_tower),
                 ("Driver Live Telemetry", "Speed, gear, throttle & braking for a selected driver", self.launch_driver_telemetry),
+                ("Head-to-Head Battle Telemetry", "Auto-tracks close battles with side-by-side traces", self.launch_battle_telemetry),
                 ("Live Tyre Strategy", "Live tyre stints and pit stop timeline per driver", self.launch_tyre_strategy),
             ]
         ))
@@ -256,6 +257,13 @@ class InsightsMenu(QMainWindow):
         print("🚀 Launching: Driver Live Telemetry")
         from src.insights.driver_telemetry_window import DriverTelemetryWindow
         window = DriverTelemetryWindow()
+        window.show()
+        self.opened_windows.append(window)
+
+    def launch_battle_telemetry(self):
+        print("🚀 Launching: Head-to-Head Battle Telemetry")
+        from src.insights.battle_telemetry_window import BattleTelemetryWindow
+        window = BattleTelemetryWindow()
         window.show()
         self.opened_windows.append(window)
 

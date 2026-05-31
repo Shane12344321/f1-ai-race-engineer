@@ -17,8 +17,8 @@ class RadioVoice:
         
         self.elevenlabs_key = os.getenv("ELEVENLABS_API_KEY")
         self.use_elevenlabs = os.getenv("ELEVENLABS_ENABLED", "true").lower() == "true"
-        # "pNInz6obpgDQGcFmaJgB" (Adam) is a very solid, energetic default available to all accounts on the free tier.
-        self.voice_id = "pNInz6obpgDQGcFmaJgB"
+        # "onwK4e9ZLuTAKqWW03F9" (Daniel) is a Steady Broadcaster voice — ideal for F1 team radio narration.
+        self.voice_id = "onwK4e9ZLuTAKqWW03F9"
 
     def toggle_elevenlabs(self):
         """Toggles the voice engine and returns the new state."""
@@ -56,7 +56,8 @@ class RadioVoice:
             "model_id": "eleven_turbo_v2_5", # Turbo model is incredibly fast and cheap
             "voice_settings": {
                 "stability": 0.5,
-                "similarity_boost": 0.75
+                "similarity_boost": 0.75,
+                "speed": 1.2
             }
         }
         
@@ -70,7 +71,7 @@ class RadioVoice:
                 f.write(response.content)
                 
             # Play it asynchronously on Mac using the native afplay command
-            subprocess.run(["afplay", temp_path])
+            subprocess.run(["afplay", "-r", "1.25", temp_path])
             
         except Exception as e:
             print(f"ElevenLabs TTS failed: {e}. Falling back to Mac TTS...")

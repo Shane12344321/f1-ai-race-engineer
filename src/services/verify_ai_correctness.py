@@ -181,7 +181,7 @@ def verify_response(response: str, event: Dict[str, Any]) -> List[str]:
 
 def main():
     print("==================================================")
-    print(" F1 Race Engineer — AI Correctness Evaluator      ")
+    print(" F1 TeleTranslator — AI Correctness Evaluator      ")
     print("==================================================")
 
     # Initialize client

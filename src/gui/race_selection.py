@@ -46,7 +46,7 @@ class RaceSelectionWindow(QMainWindow):
         self.current_year = get_season()
         self.selected_year=self.current_year 
 
-        self.setWindowTitle("F1 Race Replay - Session Selection")
+        self.setWindowTitle("F1 TeleTranslator - Session Selection")
         self._setup_ui()
         self.resize(1000, 700)
         self.setMinimumSize(800, 600)
@@ -61,7 +61,7 @@ class RaceSelectionWindow(QMainWindow):
 
         # Header (title)
         header_layout = QHBoxLayout()
-        header_label = QLabel("F1 Race Replay 🏎️")
+        header_label = QLabel("F1 TeleTranslator 🏎️")
         font = header_label.font()
         settings_btn = QPushButton("⚙ Settings")
         settings_btn.setCursor(Qt.PointingHandCursor)

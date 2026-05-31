@@ -1,5 +1,5 @@
 """
-Settings manager for F1 Race Replay application.
+Settings manager for F1 TeleTranslator application.
 Handles loading, saving, and accessing application configuration.
 """
 

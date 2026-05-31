@@ -15,7 +15,7 @@ class TelemetryStreamViewer(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - Telemetry Stream Viewer")
+        self.setWindowTitle("F1 TeleTranslator - Telemetry Stream Viewer")
         self.setGeometry(100, 100, 1200, 800)
         
         # Initialize client

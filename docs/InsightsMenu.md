@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Insights Menu is a PySide6 window that launches automatically when the race replay starts. It provides quick access to telemetry analysis tools and insight windows. The menu stays open alongside the replay and allows you to launch multiple insight windows.
+The Insights Menu is a PySide6 window that launches automatically when the visualization starts. It provides quick access to telemetry analysis tools and insight windows. The menu stays open alongside the simulation and allows you to launch multiple insight windows.
 
 ![Insights Menu](../resources/insights-menu.png)
 
@@ -12,7 +12,7 @@ The Insights Menu is a PySide6 window that launches automatically when the race 
 
 ## Usage
 
-The menu launches automatically when you start a race replay and open a "Race" session.
+The menu launches automatically when you start a race visualization and open a "Race" session.
 
 ## Adding New Buttons to the Menu
 

@@ -26,7 +26,7 @@ from src.services.voice_radio import RadioVoice
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
-SCREEN_TITLE = "F1 Race Replay"
+SCREEN_TITLE = "F1 TeleTranslator"
 PLAYBACK_SPEEDS = [0.1, 0.2, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 256.0]
 
 class F1RaceReplayWindow(arcade.Window):
@@ -1096,7 +1096,7 @@ class F1RaceReplayWindow(arcade.Window):
 
         # 5. Draw Content Text
         if not self.granite.is_available:
-            content_text = "Please set WATSONX_API_KEY and WATSONX_PROJECT_ID variables in your .env file to enable the AI Race Engineer commentary."
+            content_text = "Please set WATSONX_API_KEY and WATSONX_PROJECT_ID variables in your .env file to enable the AI TeleTranslator commentary."
             text_color = (255, 180, 100)
             is_italic = True
         elif not self.ai_enabled:
@@ -1105,7 +1105,7 @@ class F1RaceReplayWindow(arcade.Window):
             is_italic = True
         elif self.ai_pending_commentary is not None:
             label = self.ai_pending_commentary.get("label", "event")
-            content_text = f"Race Engineer is analyzing: {label}..."
+            content_text = f"TeleTranslator is analyzing: {label}..."
             text_color = (255, 215, 0)
             is_italic = True
         elif self.ai_commentary:

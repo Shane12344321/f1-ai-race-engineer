@@ -19,7 +19,7 @@ def cli_load():
     ])
 
     console = Console()
-    console.print(Markdown("# F1 Race Replay 🏎️"))
+    console.print(Markdown("# F1 TeleTranslator 🏎️"))
 
     years = [str(year) for year in range(current_year, 2009, -1)]
     year = select("Choose a year", choices=years, qmark="🗓️ ", style=style).ask()

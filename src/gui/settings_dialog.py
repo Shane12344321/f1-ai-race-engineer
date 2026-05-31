@@ -1,5 +1,5 @@
 """
-Settings dialog for F1 Race Replay application.
+Settings dialog for F1 TeleTranslator application.
 Provides UI for configuring application settings like cache location.
 """
 

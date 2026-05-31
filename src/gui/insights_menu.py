@@ -105,7 +105,7 @@ class InsightsMenu(QMainWindow):
         content_layout.addWidget(self.create_category_section(
             "AI Powered",
             [
-                ("AI Race Engineer", "IBM Granite explains race events in plain English", self.launch_granite_narrator),
+                ("AI TeleTranslator", "IBM Granite explains race events in plain English", self.launch_granite_narrator),
             ]
         ))
 
@@ -292,7 +292,7 @@ class InsightsMenu(QMainWindow):
             self.show_placeholder_message("Telemetry Stream Viewer")
             
     def launch_granite_narrator(self):
-        print("🚀 Launching: AI Race Engineer")
+        print("🚀 Launching: AI TeleTranslator")
         from src.insights.granite_narrator_window import GraniteNarratorWindow
         window = GraniteNarratorWindow()
         window.show()

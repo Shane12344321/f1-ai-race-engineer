@@ -10,7 +10,7 @@ from src.gui.pit_wall_window import PitWallWindow
 class ExamplePitWallWindow(PitWallWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - Example Pit Wall")
+        self.setWindowTitle("F1 TeleTranslator - Example Pit Wall")
     
     def setup_ui(self):
         central_widget = QWidget()

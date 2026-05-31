@@ -1,15 +1,15 @@
-# F1 Race Replay — Codebase Documentation
+# F1 TeleTranslator — Codebase Documentation
 
 ## Overview
 
-The **F1 Race Replay** project is a Python application designed to visualize Formula 1 race telemetry, track positions, and replay entire race events with interactive controls and graphical interfaces. It relies on the `FastF1` library for fetching session data and the `Arcade` game library for rendering high-performance 2D visualisations.
+The **F1 TeleTranslator** project is a Python application designed to visualize Formula 1 race telemetry, track positions, and replay entire race events with interactive controls and graphical interfaces. It relies on the `FastF1` library for fetching session data and the `Arcade` game library for rendering high-performance 2D visualisations.
 
-This project enables data-loving F1 fans to explore data generated during a race weekend, functioning as a personal "pit wall" tool for deep telemetry analysis and race replay.
+This project enables data-loving F1 fans to explore data generated during a race weekend, functioning as a personal "pit wall" tool for deep telemetry analysis and race visualization.
 
 ## Core Features
-- **Race Replay Visualization**: Real-time driver positions on a rendered track with smooth interpolation and playback speed controls.
+- **Race Visualization**: Real-time driver positions on a rendered track with smooth interpolation and playback speed controls.
 - **Safety Car Simulation**: Animates a simulated safety car during track status periods when the safety car is deployed.
-- **AI Race Engineer (IBM Granite)**: Detects significant race events (battles, overtakes, pit stops, tyre changes, track status) and generates plain-English narrations using IBM Granite on watsonx.ai.
+- **AI TeleTranslator (IBM Granite)**: Detects significant race events (battles, overtakes, pit stops, tyre changes, track status) and generates plain-English narrations using IBM Granite on watsonx.ai.
 - **Insights Menu (Pit Wall Windows)**: A floating PyQt/PySide6 menu for quick access to various telemetry analysis tools and live data feeds.
 - **Telemetry Streaming**: A TCP socket server broadcasting live telemetry frame data for consumption by external applications or custom insight windows.
 - **Bayesian Tyre Degradation Model**: An advanced state-space model that integrates fuel load effects, track abrasion, and tyre compound specific data to estimate tyre degradation during a race.
@@ -66,9 +66,9 @@ f1-race-replay/
 - Uses `PySide6` for desktop application components that are difficult to build in an Arcade game loop.
 - **`RaceSelectionWindow`**: A desktop entry point for picking Year, Round, and Session.
 - **`PitWallWindow`**: A base class for custom insight views that connects to the TCP stream automatically.
-- **`GraniteNarratorWindow`**: AI Race Engineer window that displays Granite-generated narrations.
+- **`GraniteNarratorWindow`**: AI TeleTranslator window that displays Granite-generated narrations.
 
-### 6. AI Race Engineer Pipeline (`src/services/granite_client.py` & `src/services/race_event_detector.py`)
+### 6. AI TeleTranslator Pipeline (`src/services/granite_client.py` & `src/services/race_event_detector.py`)
 - **`RaceEventDetector`**: A stateful detector that processes each telemetry frame and identifies key events:
   - Close battles (gap < 1.0s)
   - Pit stops (driver enters pit lane)

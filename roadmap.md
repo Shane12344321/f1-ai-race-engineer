@@ -1,4 +1,4 @@
-# F1 Race Replay Roadmap
+# F1 TeleTranslator Roadmap
 
 Since launching this project, I've receieved a lot of feedback and feature requests from the community. I thought it would be helpful for everyone (including myself) to have a clear vision and roadmap for the future of this project, so if you are planning on contributing or using it, you know what to expect.
 

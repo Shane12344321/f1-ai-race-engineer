@@ -519,7 +519,7 @@ class TrackPositionWindow(PitWallWindow):
 
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - Track Position Map")
+        self.setWindowTitle("F1 TeleTranslator - Track Position Map")
         self.setMinimumSize(520, 560)
         self._circuit_length_m: float | None = None
         self._driver_colors: dict[str, str] = {}

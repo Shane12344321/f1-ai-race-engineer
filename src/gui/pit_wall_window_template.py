@@ -16,7 +16,7 @@ class MyCustomWindow(PitWallWindow):
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - My Custom Window")
+        self.setWindowTitle("F1 TeleTranslator - My Custom Window")
         # TODO: Initialize any instance variables you need
     
     def setup_ui(self):

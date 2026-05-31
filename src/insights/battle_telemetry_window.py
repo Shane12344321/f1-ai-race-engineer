@@ -26,7 +26,7 @@ class BattleTelemetryWindow(PitWallWindow):
         self._time_buffers = {}
         self._auto_battle = True
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - Head-to-Head Battle")
+        self.setWindowTitle("F1 TeleTranslator - Head-to-Head Battle")
 
     def setup_ui(self):
         central = QWidget()

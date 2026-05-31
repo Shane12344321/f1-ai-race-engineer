@@ -132,10 +132,10 @@ class TelemetryStreamClient(QThread):
       self.connected = True
       self.connection_status.emit("Connected")
     except socket.timeout:
-      self.error_occurred.emit(f"Connection timeout - is F1 Race Replay running?")
+      self.error_occurred.emit(f"Connection timeout - is F1 TeleTranslator running?")
       raise
     except ConnectionRefusedError:
-      self.error_occurred.emit(f"Connection refused - is F1 Race Replay running on {self.host}:{self.port}?")
+      self.error_occurred.emit(f"Connection refused - is F1 TeleTranslator running on {self.host}:{self.port}?")
       raise
           
   def _receive_data(self):

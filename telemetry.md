@@ -1,4 +1,4 @@
-# F1 Race Replay - Telemetry Stream Demo
+# F1 TeleTranslator - Telemetry Stream Demo
 
 This document provides instructions on how to use the telemetry stream feature which is currently in early demo stage. This allows you to see the raw telemetry data being streamed from the replay process in real-time, and is intended for developers who want to build custom tools and interfaces on top of the replay data.
 
@@ -8,7 +8,7 @@ This document provides instructions on how to use the telemetry stream feature w
 
 Ensure you have the latest version of the application with telemetry support and have already setup an environment with the required dependencies (see `README.md` for setup instructions).
 
-1. **Start the F1 Race Replay and pass the --telemetry flag:**
+1. **Start the F1 TeleTranslator and pass the --telemetry flag:**
    ```bash
    python main.py --telemetry
    ```

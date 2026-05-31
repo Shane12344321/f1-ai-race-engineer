@@ -44,7 +44,7 @@ class DriverTelemetryWindow(PitWallWindow):
         self._circuit_length_m: float | None = None
         self._x_mode = "time"   # "time" | "lap"
         super().__init__()
-        self.setWindowTitle("F1 Race Replay - Driver Live Telemetry")
+        self.setWindowTitle("F1 TeleTranslator - Driver Live Telemetry")
 
     # ── UI setup ─────────────────────────────────────────────────────────
 

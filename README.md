@@ -1,6 +1,6 @@
-# 🏎️ F1 AI Race Engineer
+# 🏎️ F1 TeleTranslator
 
-An autonomous, AI-driven Race Engineer simulation. 
+An autonomous AI-driven TeleTranslator that converts live F1 telemetry into real-time broadcast commentary. 
 
 This project takes live telemetry from a Formula 1 race and processes it through a custom **AI Translation Layer**. Using an Event State Machine and IBM Granite, it acts as a personalized broadcast team, identifying overtakes, pit stops, and weather changes in real-time and narrating them with broadcast-quality voice.
 

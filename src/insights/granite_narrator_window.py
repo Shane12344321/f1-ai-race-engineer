@@ -50,7 +50,7 @@ class _SignalBridge(QObject):
 
 class GraniteNarratorWindow(PitWallWindow):
     """
-    AI Race Engineer insight window.
+    AI TeleTranslator insight window.
 
     Detects race events from the telemetry stream, sends them to
     IBM Granite for narration, and displays the results as a
@@ -66,7 +66,7 @@ class GraniteNarratorWindow(PitWallWindow):
         self._is_paused = False
         self._latest_telemetry = None  # Store latest frame for user questions
         super().__init__()
-        self.setWindowTitle("AI Race Engineer — Powered by IBM Granite")
+        self.setWindowTitle("AI TeleTranslator — Powered by IBM Granite")
         self.setGeometry(100, 100, 480, 700)
 
     def setup_ui(self):
@@ -88,7 +88,7 @@ class GraniteNarratorWindow(PitWallWindow):
         header_layout.setSpacing(2)
 
         title_row = QHBoxLayout()
-        title = QLabel("🏎️ AI RACE ENGINEER")
+        title = QLabel("🏎️ AI TELETRANSLATOR")
         title.setFont(QFont("Arial", 15, QFont.Bold))
         title.setStyleSheet(f"color: {_TEXT}; border: none;")
         title_row.addWidget(title)
@@ -166,7 +166,7 @@ class GraniteNarratorWindow(PitWallWindow):
         input_layout.setSpacing(8)
 
         self._ask_input = QLineEdit()
-        self._ask_input.setPlaceholderText("Ask the Race Engineer...")
+        self._ask_input.setPlaceholderText("Ask the TeleTranslator...")
         self._ask_input.setStyleSheet(f"""
             QLineEdit {{
                 background: {_BG};
@@ -337,7 +337,7 @@ class GraniteNarratorWindow(PitWallWindow):
         prompt = (
             f"USER QUESTION: {question}\n\n"
             f"CURRENT TELEMETRY DATA:\n{context}\n\n"
-            f"Answer the user's question as the AI Race Engineer using ONLY the "
+            f"Answer the user's question as the AI TeleTranslator using ONLY the "
             f"telemetry data above. Keep it concise (1-3 sentences) and factual."
         )
 
@@ -492,7 +492,7 @@ class GraniteNarratorWindow(PitWallWindow):
 
 def main():
     app = QApplication(sys.argv)
-    app.setApplicationName("AI Race Engineer")
+    app.setApplicationName("AI TeleTranslator")
     window = GraniteNarratorWindow()
     window.show()
     sys.exit(app.exec())
